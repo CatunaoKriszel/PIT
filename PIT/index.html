@@ -1,0 +1,129 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Records</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            tr:hover {
+                background-color: #ddd;
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 10px;
+            }
+
+            button {
+                background-color: #4CAF50; /* Green */
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s, transform 0.2s;
+                font-size: 14px;
+                font-weight: bold;
+            }
+
+            button:hover {
+                background-color: #45a049; /* Darker green */
+                transform: translateY(-2px); /* Slight lift effect */
+            }
+
+            button:active {
+                transform: translateY(0); /* Reset lift effect */
+            }
+
+            .delete-button {
+                background-color: #f44336; /* Red */
+            }
+
+            .delete-button:hover {
+                background-color: #e53935; /* Darker red */
+            }
+
+            .container {
+                max-width: 800px;
+                margin: auto;
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Student Records</h1>
+            <table id="studentTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                    <th>Course</th>
+                    <th>Section</th>
+                    <th>Actions</th>
+                </tr>
+
+                       <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>    </td>
+                                <td class='action-buttons'>
+                                    <button onclick='editStudent({$row['id']})'>Edit</button>
+                                    <button class='delete-button' onclick='deleteStudent({$row['id']})'>Delete</button>
+                                </td>
+                            </tr>
+                    
+              
+            </table>
+        </div>
+
+        <script>
+            function editStudent(id) {
+                const newName = prompt("Enter new name for student ID " + id);
+                if (newName) {
+                    window.location.href = 'update_student.php?id=' + id + '&name=' + encodeURIComponent(newName);
+                }
+            }
+
+            function deleteStudent
